@@ -1,5 +1,5 @@
 # CNMF-E eLife submission
-This repo supports our submission of CNMF-E work to eLife. All the code and data are shared for reproducible research. All figures shown and videos in our paper can be automatically generated using the provided code. The latex file for wring papers were provided as well. In a nutshell, you can completely reproduce a paper using  this repo. 
+This repo supports our submission of CNMF-E work to eLife. All the code and data are shared for reproducible research. The figures and the videos shown in our paper can be automatically generated using the provided code. The latex file for writing the paper was provided as well. In a nutshell, you can completely reproduce our paper using  this repo. 
 
 ## Author
 Pengcheng Zhou, Columbia University, zhoupc1988@gmail.com
