@@ -53,7 +53,7 @@ RSS_cnmfe = [RSS_init, RSS_residual, RSS_iter0, RSS_iter_1, RSS_iter_2, RSS_iter
 RSS_ids = 1:length(RSS_cnmfe);
 labels = [1, 2, 3, 4, 4, 5, 4, 4, 5, 4, 4];
 label_meanings = {'initialize A, C, W & b_0', 'add neurons from the residual', ...
- 'fix the correlation issue', 'update A, C & b_0 ', 'update W & b_0 '};
+ 'refine initialization', 'update A, C & b_0 ', 'update W & b_0 '};
 
 %%
 % save CNMFE_RESULTS neuron_init neuron D F  A C sn -append;

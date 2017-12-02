@@ -4,6 +4,10 @@ addpath('../functions/');
 work_dir = fileparts(mfilename('fullpath'));
 prepare_env;
 output_folder = [fig_folder, filesep, 'Fig_INIT_subfigs'];
+results_folder = sprintf('%sfig_initialization%s', results_folder, filesep);
+if ~exist(results_folder, 'dir')
+    mkdir(results_folder);
+end
 results_file = [results_folder, 'fig_initialization.mat'];
 
 if ~exist(results_file, 'file')

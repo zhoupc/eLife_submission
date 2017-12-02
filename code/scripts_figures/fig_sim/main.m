@@ -263,6 +263,7 @@ tsub = 2;   % downsampling for fast initialization of BG
 maxIter = 5;
 neuron = neuron_basic; 
 neuron.P.p = 2;
+neuron.P.sn = neuron0.P.sn; 
 try
     for m=1:16
         eval(sprintf('neuron_cnmf_%d=results_data.neuron_cnmf_%d;', m, m));
