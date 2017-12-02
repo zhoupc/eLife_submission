@@ -1,0 +1,6 @@
+results/Fig_* 
+results/fig_*
+data/*.mat
+data/*_source_extraction
+Figs/.cache/*
+*insyncdl

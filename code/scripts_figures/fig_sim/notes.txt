@@ -1,0 +1,44 @@
+-------------- CellsortPCA 10-Nov-2017: temp.tif -------------- 
+   79948 pixels x 2000 time frames; using temporal covariance matrix.
+ Read frame    1 out of 2000; Elapsed time is 0.392514 seconds.
+ Read frame  501 out of 2000; Elapsed time is 1.408115 seconds.
+ Read frame 1001 out of 2000; Elapsed time is 3.138415 seconds.
+ Read frame 1501 out of 2000; Elapsed time is 5.580084 seconds.
+ Read frame 2000 out of 2000; Elapsed time is 8.729082 seconds.
+ First 250 PCs contain 94.7% of the variance.
+ CellsortPCA: saving data and exiting; Elapsed time is 17.213237 seconds.
+pca: 17.22
+-------------- CellsortICA 10-Nov-2017 -------------- 
+Failed to converge; terminating after 1000 rounds, current change in estimate 1.48e-05.
+ica: 190.86
+Elapsed time is 195.897253 seconds.
+IdleTimeout has been reached.
+
+-------------- CellsortPCA 11-Nov-2017: temp.tif -------------- 
+   79948 pixels x 2000 time frames; using temporal covariance matrix.
+ Read frame    1 out of 2000; Elapsed time is 0.329153 seconds.
+ Read frame  501 out of 2000; Elapsed time is 1.366171 seconds.
+ Read frame 1001 out of 2000; Elapsed time is 3.127262 seconds.
+ Read frame 1501 out of 2000; Elapsed time is 5.609078 seconds.
+ Read frame 2000 out of 2000; Elapsed time is 8.803624 seconds.
+ First 250 PCs contain 94.7% of the variance.
+ CellsortPCA: saving data and exiting; Elapsed time is 16.865702 seconds.
+pca: 16.87
+-------------- CellsortICA 11-Nov-2017 -------------- 
+Failed to converge; terminating after 1000 rounds, current change in estimate 2.17e-08.
+ica: 200.20
+Elapsed time is 205.254673 seconds.
+
+-------------- CellsortPCA 11-Nov-2017: temp.tif -------------- 
+   79948 pixels x 2000 time frames; using temporal covariance matrix.
+ Read frame    1 out of 2000; Elapsed time is 0.320829 seconds.
+ Read frame  501 out of 2000; Elapsed time is 1.372593 seconds.
+ Read frame 1001 out of 2000; Elapsed time is 3.144300 seconds.
+ Read frame 1501 out of 2000; Elapsed time is 5.659987 seconds.
+ Read frame 2000 out of 2000; Elapsed time is 8.921603 seconds.
+ First 600 PCs contain 96% of the variance.
+ CellsortPCA: saving data and exiting; Elapsed time is 28.627449 seconds.
+pca: 28.63
+-------------- CellsortICA 11-Nov-2017 -------------- 
+Failed to converge; terminating after 1000 rounds, current change in estimate 8.85e-05.
+ica: 450.45
