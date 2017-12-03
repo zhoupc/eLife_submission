@@ -115,7 +115,8 @@ neuron_basic = neuron.copy();
 %% show how RSS changes over different operations. Figure 4B
 try
     neuron_init = results_data.neuron0_init;
-    neuron = results_data.neuron0;
+    neuron0 = results_data.neuron0;
+    neuron = neuron0.copy(); 
     D = results_data.D;
     F = results_data.F;
     A = results_data.A;
@@ -261,24 +262,26 @@ res_ds = reshape(res_ds, d1s*d2s, T);
 res_ds = imresize(res_ds, [size(res_ds,1), floor(T/2)]); 
 tsub = 2;   % downsampling for fast initialization of BG
 maxIter = 5;
-neuron = neuron_basic; 
-neuron.P.p = 2;
-neuron.P.sn = neuron0.P.sn; 
+neuron_basic.P.p = 2;
+neuron_basic.P.sn = neuron0.P.sn; 
+         opt = statset('maxiter',1000);
+
 try
     for m=1:16
         eval(sprintf('neuron_cnmf_%d=results_data.neuron_cnmf_%d;', m, m));
     end
 catch
-    for nb=1:16
-        
-        [bin, fin] = nnmf(res_ds, nb);
+    for nb= 7:7 % 1:16 we tried different values and nb=7 is the best 
+        rng(10); 
+%         [bin, fin] = nnmf(res, nb); 
+        [bin, fin] = nnmf(res_ds, nb, 'opt', opt, 'algorithm', 'mult'); 
         %         fin = imresize(f, [nb, T]);
         bin = neuron.reshape(imresize(reshape(bin, d1s, d2s, []), [d1, d2]), 1);
         fin = imresize(fin, [size(fin,1), T]); 
 %         bin = HALS_spatial(max(res, 0), bin, fin, [], maxIter);
 %         fin = HALS_temporal(max(res, 0), bin, fin, maxIter);
         
-        neuron_cnmf = neuron.copy();
+        neuron_cnmf = neuron_basic.copy();
         neuron_cnmf.A = Ain;
         neuron_cnmf.C = Cin;
         neuron_cnmf.b = bin;
@@ -286,12 +289,12 @@ catch
         
         % iteratively update spatial and temporal components
         neuron_cnmf.P.mis_entries = [];
-        for miter=1:2
-            neuron_cnmf.updateSpatial(Y);
-            neuron_cnmf.updateTemporal(Y);
-        end
+        %         for miter=1:2
+        neuron_cnmf.updateTemporal(Y);
+        neuron_cnmf.updateSpatial(Y);
+        %         end
         neuron_cnmf.compress_results();
-       
+        
         eval(sprintf('neuron_cnmf_%d=neuron_cnmf.copy();', nb));
         clc;
         fprintf('number of background: %d\n', nb);
@@ -300,48 +303,48 @@ catch
 end
 
 %% evaluate performance of different rank
-num_detected = zeros(1, 16);
-sim_spatial = zeros(1, 16);
-sim_temporal = zeros(1, 16);
-figure('papersize', [10, 10]);
-init_fig;
-
-for nb=1:16
-    eval(sprintf('neuron_cnmf = neuron_cnmf_%d.copy;', nb));
-    A_cnmf = neuron_cnmf.A;
-    C_cnmf = neuron_cnmf.C;
-    match_cnmf = pair_neurons(A, C, A_cnmf, C_cnmf);
-    ind_cnmf = ~isnan(match_cnmf.max_all);
-    num_detected(nb) = sum(ind_cnmf);
-    sim_spatial(nb) = mean(match_cnmf.max_spatial(ind_cnmf));
-    sim_temporal(nb) = mean(match_cnmf.max_temporal(ind_cnmf));
-    subplot(4,4,nb);
-    
-    plot(match_cnmf.max_spatial(ind_cnmf), match_cnmf.max_temporal(ind_cnmf), 'ok');
-    box on;
-    legend(sprintf('nb = %d', nb), 'location', 'northwest');
-    %     xlabel('spatial similarity');
-    %     ylabel('temporal similarity');
-    set(gca, 'xtick', [0, 1]);
-    set(gca, 'ytick', [0, 1]);
-    xlim([0, 1]);
-    ylim([0, 1]);
-    if mod(nb, 4)==1
-        ylabel('temporal');
-    end
-    if nb>12
-        xlabel('spatial');
-    end
-end
+% num_detected = zeros(1, 16);
+% sim_spatial = zeros(1, 16);
+% sim_temporal = zeros(1, 16);
+% figure('papersize', [10, 10]);
+% init_fig;
+% 
+% for nb=1:16
+%     eval(sprintf('neuron_cnmf = neuron_cnmf_%d.copy;', nb));
+%     A_cnmf = neuron_cnmf.A;
+%     C_cnmf = neuron_cnmf.C;
+%     match_cnmf = pair_neurons(A, C, A_cnmf, C_cnmf);
+%     ind_cnmf = ~isnan(match_cnmf.max_all);
+%     num_detected(nb) = sum(ind_cnmf);
+%     sim_spatial(nb) = mean(match_cnmf.max_spatial(ind_cnmf));
+%     sim_temporal(nb) = mean(match_cnmf.max_temporal(ind_cnmf));
+%     subplot(4,4,nb);
+%     
+%     plot(match_cnmf.max_spatial(ind_cnmf), match_cnmf.max_temporal(ind_cnmf), 'ok');
+%     box on;
+%     legend(sprintf('nb = %d', nb), 'location', 'northwest');
+%     %     xlabel('spatial similarity');
+%     %     ylabel('temporal similarity');
+%     set(gca, 'xtick', [0, 1]);
+%     set(gca, 'ytick', [0, 1]);
+%     xlim([0, 1]);
+%     ylim([0, 1]);
+%     if mod(nb, 4)==1
+%         ylabel('temporal');
+%     end
+%     if nb>12
+%         xlabel('spatial');
+%     end
+% end
 % [~, nb_best] = max(sim_spatial+sim_temporal);
-nb_best = 7; 
-eval(sprintf('neuron_cnmf = neuron_cnmf_%d.copy;', nb_best));
-save(results_file, 'neuron_cnmf', '-append');
-
-if export_fig
-    saveas(gcf, sprintf('%s/cnmf_nb_similarities.fig', output_folder));
-    saveas(gcf, sprintf('%s/cnmf_nb_similarity.pdf', output_folder));
-end
+% % nb_best = 7; 
+% eval(sprintf('neuron_cnmf = neuron_cnmf_%d.copy;', nb_best));
+% save(results_file, 'neuron_cnmf', '-append');
+% 
+% if export_fig
+%     saveas(gcf, sprintf('%s/cnmf_nb_similarities.fig', output_folder));
+%     saveas(gcf, sprintf('%s/cnmf_nb_similarity.pdf', output_folder));
+% end
 
 
 %% PCA/ICA
@@ -356,6 +359,7 @@ catch
 end
 
 %% match neurons
+neuron = neuron0.copy(); 
 % match CNMF-E initialization
 match_cnmfe_init = pair_neurons(A, C, neuron_init.A, neuron_init.C_raw);
 ind_cnmfe_init = ~isnan(match_cnmfe_init.max_all);

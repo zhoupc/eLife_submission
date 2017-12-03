@@ -1,5 +1,5 @@
 %% initialize working space and prepare for the computation
-% clear; clc; close all;
+clear; clc; close all;
 addpath('../functions/');
 addpath('./extra');
 addpath(genpath('../../cbrewer')); 
@@ -29,7 +29,7 @@ export_fig = true;
 
 
 tshock = [690, 720, 780, 840, 930, 960, 1020, 1110, 1140, 1200, 1230];
-pixel_size = 1000/726.67; %micro 
+pixel_size = 1000/726.67; %micron 
 %% run CNMF-E or load results
 nam = get_fullname('../../../data/CAMKII120_160317shock.mat');          % this demo data is very small, here we just use it as an example
 try

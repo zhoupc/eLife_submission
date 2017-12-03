@@ -414,7 +414,7 @@ for m=1:size(C,1)
 end
 axis tight;
 set(gca, 'ytick', 1:2:K_match);
-set(gca, 'yticklabel', K_match:-2:2);
+set(gca, 'yticklabel', K_match:-2:1);
 set(gca, 'xticklabel', []);
 ylabel('Match');
 box on ;

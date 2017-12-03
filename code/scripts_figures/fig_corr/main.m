@@ -22,7 +22,7 @@ results_data = matfile(results_file);
 if ~exist(output_folder, 'dir')
     mkdir(output_folder);
 end
-export_fig = false;
+export_fig = true;
 
 % -------------------------    COMPUTATION    -------------------------  %
 pars_envs = struct('memory_size_to_use', 8, ...   % GB, memory space you allow to use in MATLAB
@@ -31,7 +31,7 @@ pars_envs = struct('memory_size_to_use', 8, ...   % GB, memory space you allow t
 
 use_parallel = true;
 update_sn = true;
-save_initialization = true;
+save_initialization = false;
 
 %% load the background and noise levels extracted from the a typical microendoscopic data
 load data_BG;
