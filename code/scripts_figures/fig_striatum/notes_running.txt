@@ -1,0 +1,23 @@
+-------------- CellsortPCA 17-Oct-2017: temp.tif -------------- 
+   65536 pixels x 6000 time frames; using temporal covariance matrix.
+ Read frame    1 out of 6000; Elapsed time is 0.878427 seconds.
+ Read frame  501 out of 6000; Elapsed time is 2.016826 seconds.
+ Read frame 1001 out of 6000; Elapsed time is 3.873686 seconds.
+ Read frame 1501 out of 6000; Elapsed time is 6.445663 seconds.
+ Read frame 2001 out of 6000; Elapsed time is 9.732034 seconds.
+ Read frame 2501 out of 6000; Elapsed time is 13.740828 seconds.
+ Read frame 3001 out of 6000; Elapsed time is 18.480140 seconds.
+ Read frame 3501 out of 6000; Elapsed time is 23.915383 seconds.
+ Read frame 4001 out of 6000; Elapsed time is 30.065865 seconds.
+ Read frame 4501 out of 6000; Elapsed time is 36.938392 seconds.
+ Read frame 5001 out of 6000; Elapsed time is 44.525761 seconds.
+ Read frame 5501 out of 6000; Elapsed time is 52.846454 seconds.
+ Read frame 6000 out of 6000; Elapsed time is 61.870222 seconds.
+ First 3000 PCs contain 86.3% of the variance.
+ CellsortPCA: saving data and exiting; Elapsed time is 457.569695 seconds.
+pca: 457.58
+-------------- CellsortICA 17-Oct-2017 -------------- 
+
+Convergence in 380 rounds.
+ica: 1178.37
+Elapsed time is 1178.921875 seconds.
