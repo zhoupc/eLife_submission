@@ -21,7 +21,7 @@ results_data = matfile(results_file);
 if ~exist(output_folder, 'dir')
     mkdir(output_folder);
 end
-export_fig = true;
+export_fig = false;
 
 %% computation environment
 pars_envs = struct('memory_size_to_use', 8, ...   % GB, memory space you allow to use in MATLAB

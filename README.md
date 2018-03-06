@@ -2,7 +2,7 @@
 This repo supports our submission of [CNMF-E](https://github.com/zhoupc/CNMF_E) work to eLife. All the code and data are shared for reproducible research. The figures and the videos shown in our [paper](https://arxiv.org/abs/1605.07266) can be automatically generated using the provided code. The latex file for writing the paper was provided as well. In a nutshell, you can completely reproduce our paper using  this repo. 
 
 ## Author
-Pengcheng Zhou, Columbia University, zhoupc1988@gmail.com
+[Pengcheng Zhou](zhoupc.github.io), Columbia University, zhoupc1988@gmail.com
 
 All rights reserved! 
 
@@ -36,7 +36,7 @@ All rights reserved!
 	
 		collected by Shay Q. Neufeld &  Bernardo L. Sabatini at Harvard University)
 		
-	- ./PFC4_15Hz.mat (**Figure 7**) )	
+		 ./PFC4_15Hz.mat (**Figure 7**) )	
 		collected by Shanna L. Resendez and Garret D. Stuber at University of North Carolina at Chapel Hill
 		
 	- ./bma22_epm_motioncorrected_round1_cropped_correction.mat (**Figure 8**) 
@@ -48,16 +48,16 @@ All rights reserved!
 		collected by Jose Rodriguez-Romaguera and Garret D. Stuber at University of North Carolina at Chapel Hill) 
 
 - ./Figs
-	- ./Fig_introduction.tex (**Figure 1**)
-	- ./Fig_BG.tex   (**Figure 2**)  
-	- ./Fig_INIT.tex  (** Figure 3 **)
-	- ./Fig_SIM_part1.tex (**Figure 4**)
-  	- ./Fig_SIM_part2.tex (**Figure 5**)
-  	- ./Fig_Striatum.tex  (**Figure 6**)
-  	- ./Fig_PFC.tex  (**Figure 7**)
-  	- ./Fig_HIPPOCAMPUS.tex (**Figure 8**)
-  	- ./Fig_BNST.tex  (**Figure 9**)
-  	
+  - ./Fig_introduction.tex (**Figure 1**)
+  - ./Fig_BG.tex   (**Figure 2**)  
+  - ./Fig_INIT.tex  (** Figure 3 **)
+  - ./Fig_SIM_part1.tex (**Figure 4**)
+    - ./Fig_SIM_part2.tex (**Figure 5**)
+  - ./Fig_Striatum.tex  (**Figure 6**)
+  - ./Fig_PFC.tex  (**Figure 7**)
+  - ./Fig_HIPPOCAMPUS.tex (**Figure 8**)
+  - ./Fig_BNST.tex  (**Figure 9**)
+
 - ./Video
 
 - ./results
@@ -102,24 +102,156 @@ MATLAB
 Latex 
 
 ```
-pdflatex ./Figs/Fig_INIT.text
+pdflatex ./Figs/Fig_INIT.tex
 ```
 
 Results: 
 Figure 3: ./Figs/Fig_INIT.pdf
 S3 Video: ./Videos/sim_initialization.avi
 
+
+
+### Figure 4
+
+MATLAB
+
+```
+>> run ./code/scripts_figures/fig_sim/main.m 
+```
+
+Latex 
+
+```
+pdflatex ./Figs/Fig_SIM_part1.tex
+```
+
+Results: 
+Figure 4: ./Figs/Fig_SIM_part1.pdf
+S4 Video: ./Videos/sim_snr1_decompose.avi
+S5 Video: ./Videos/sim_snr6_decompose.avi
+
+### Figure 5
+
+MATLAB
+
+```
+>> run ./code/scripts_figures/fig_corr/main.m 
+```
+
+Latex 
+
+```
+pdflatex ./Figs/Fig_SIM_part2.tex
+```
+
+Results: 
+Figure 5: ./Figs/Fig_SIM_part2.pdf
+
+### Figure 6
+
+MATLAB
+
+```
+>> run ./code/scripts_figures/fig_striatum/main.m 
+```
+
+Latex 
+
+```
+pdflatex ./Figs/Fig_Striatum.tex
+```
+
+Results: 
+Figure 6: ./Figs/Fig_Striatum.pdf
+S6 Video: ./Videos/striatum_decompose.avi
+
+### Figure 7
+
+MATLAB
+
+```
+>> run ./code/scripts_figures/fig_PFC/main.m 
+```
+
+Latex 
+
+```
+pdflatex ./Figs/Fig_PFC.tex
+```
+
+Results: 
+Figure 6: ./Figs/Fig_PFC.pdf
+S7 Video: ./Videos/PFC_decompose.avi
+
+### Figure 8
+
+MATLAB
+
+```
+>> run ./code/scripts_figures/fig_hippocampus/main.m 
+```
+
+Latex 
+
+```
+pdflatex ./Figs/Fig_HIPPOCAMPUS.tex
+```
+
+Results: 
+Figure 8: ./Figs/Fig_HIPPOCAMPUS.pdf
+S9 Video: ./Videos/HIPPOCAMPUS_decompose.avi
+S10 Video: ./Videos/intervention.avi
+
+### Figure 9
+
+MATLAB
+
+```
+>> run ./code/scripts_figures/fig_bnst/main.m 
+```
+
+Latex 
+
+```
+pdflatex ./Figs/Fig_BNST.tex
+```
+
+Results: 
+Figure 9: ./Figs/Fig_BNST.pdf
+S11 Video: ./Videos/BNST_decompose.avi
+
+### Figure 10
+
+Figure 10 is a figure for illustrative purpose. I created the figure in an interactive way. Thus, I don't have the script for creating this figure. 
+
+
+
+## Compile the manuscript
+
+Latex 
+
+```
+pdflatex CNMF_E_final.tex
+bibtex CNMF_E_final.tex
+pdflatex CNMF_E_final.tex
+pdflatex CNMF_E_final.tex
+```
+
+Results: 
+
+The paper: :paperclip:**CNMF_E_final.pdf**
+
 ### Convert all avi movies to mp4 videos 
 
 
-All exported Videos from MATLAB are *avi files. We used ffmpeg to convert them into mp4 format and rename as 'S* Video.mp4'
+All exported Videos from MATLAB are *avi files. We used ffmpeg to convert them into mp4 format and rename as 'S** Video.mp4'
 
 ```
 bash ./Videos/avi2mp4.sh
 bash ./Videos/rename_videos.sh 
 ```
 
-## TO BE CONTINUTED**
+## 
 
 
 

@@ -1,3 +1,11 @@
-Figs/.cache/*
 *insyncdl
 *.dir.mat
+*.aux
+*.bbl
+*.blg
+*.log
+*.soc
+*.out
+*.suppoinfo
+*/Figs/.cache*
+
