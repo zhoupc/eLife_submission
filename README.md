@@ -226,6 +226,16 @@ Figure 10 is a figure for illustrative purpose. I created the figure in an inter
 
 
 
+### Convert all avi movies to mp4 videos 
+
+
+All exported Videos from MATLAB are *avi files. We used ffmpeg to convert them into mp4 format and rename as 'S** Video.mp4'
+
+```
+bash ./Videos/avi2mp4.sh
+bash ./Videos/rename_videos.sh 
+```
+
 ## Compile the manuscript
 
 Latex 
@@ -239,19 +249,9 @@ pdflatex CNMF_E_final.tex
 
 Results: 
 
-The paper: :paperclip:**CNMF_E_final.pdf**
+The paper: 📎**CNMF_E_final.pdf**
 
-### Convert all avi movies to mp4 videos 
-
-
-All exported Videos from MATLAB are *avi files. We used ffmpeg to convert them into mp4 format and rename as 'S** Video.mp4'
-
-```
-bash ./Videos/avi2mp4.sh
-bash ./Videos/rename_videos.sh 
-```
-
-## 
+### :smiley:
 
 
 
